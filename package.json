@@ -1,0 +1,17 @@
+{
+  "name": "serverless-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "copyshared": "./scripts/copy_shared.sh",
+    "backend:deploydev": "npm run deploy:dev -w backend"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
