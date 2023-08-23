@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { AppBar, Container, MenuItem, Toolbar } from '@mui/material';
 import { useAuthContext } from '../../Auth/contexts/authContext';
+import React from 'react';
 interface HeaderMenuProps {
     backgroundColor: string;
     color: string;

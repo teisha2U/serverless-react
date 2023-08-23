@@ -87,7 +87,7 @@ export class CognitoService {
   //   "version": 2,
   //   "jti": "f98e0d1c-42b0-4c42-88b4-9ef9ab9fbaba",
   //   "client_id": "7p1g2ho5eslm2vea7jf8o8f2ao",
-  //   "username": "laimaB"
+  //   "username": "ahsiet"
   // }
 
   getRedirectToSignInUrl(config: ICognitoConfig): string {

@@ -105,30 +105,6 @@ Resources:
             UserPoolArn: !GetAtt CognitoUserPool.Arn
         AddDefaultAuthorizerToCorsPreflight: False
 
-  # GetUserData:
-  #   Type: "AWS::Serverless::Function"
-  #   Properties:
-  #     Handler: index.getUserHandler
-  #     Runtime: nodejs18.x
-  #     Policies:
-  #       - Version: "2012-10-17"
-  #         Statement:
-  #           - Effect: Allow
-  #             Action:
-  #               - "dynamodb:Query"
-  #               - "dynamodb:GetItem"
-  #             Resource:
-  #               - "Fn::GetAtt":
-  #                   - DataTable
-  #                   - Arn
-  #               - "Fn::Join":
-  #                   - /
-  #                   - - "Fn::GetAtt":
-  #                         - DataTable
-  #                         - Arn
-  #                     - index
-  #                     - startIndex
-
   UserApiHandler:
     Type: "AWS::Serverless::Function"
     Properties:

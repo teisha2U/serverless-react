@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/app.tsx --bundle --minify --sourcemap --outfile=dist/bundle.js"
+    "build:dev": "npm run build && cp config/dev_config.json dist",
+    "build": "rm -rf dist && esbuild src/App.tsx --bundle --minify --sourcemap --outfile=dist/bundle.js && cp -R public/** dist"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "@types/node": "^20.5.1",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",

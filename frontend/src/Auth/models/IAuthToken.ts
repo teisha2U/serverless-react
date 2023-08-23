@@ -13,7 +13,7 @@ export default interface IAuthToken {
 //   "cognito:username": "laimaB",
 //   "exp": 1606511350,
 //   "iat": 1606507750,
-//   "email": "ahsiet4@yahoo.com"
+//   "email": "ahsiet@yahoo.com"
 
 export interface ICognitoToken {
   at_hash: string;

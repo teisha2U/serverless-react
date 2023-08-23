@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState, useReducer, useContext } from 'react';
+import React,{ createContext, PropsWithChildren, useState, useReducer, useContext } from 'react';
 import IAuthToken from '../models/IAuthToken';
 import IUser from '../../shared/models/IUser';
 import { CognitoService } from '../services/CognitoService';
@@ -6,17 +6,19 @@ import { tokenReducer, TokenActions, isTokenExpired } from './token-reducer';
 import { defaultUrl } from '../models/IAuth';
 import { useAppContext } from '../../contexts/appContext';
 
-const AuthContext = createContext<{
-  user: IUser | null;
-  token: IAuthToken | null;
-  login: (_token: string) => void;
-  logout: () => void;
-  isLoggedIn: boolean;
-  setUserContext: (user: IUser) => void;
-  checkExpired: () => boolean;
-  redirectOnLogin: string;
-  setRedirectOnLogin: (url: string) => void;
-}>({
+type AuthContextType = {
+    user: IUser | null;
+    token: IAuthToken | null;
+    login: (_token: string) => void;
+    logout: () => void;
+    isLoggedIn: boolean;
+    setUserContext: (user: IUser) => void;
+    checkExpired: () => boolean;
+    redirectOnLogin: string;
+    setRedirectOnLogin: (url: string) => void;
+  }
+
+const AuthContext: React.Context<AuthContextType> = createContext<AuthContextType>({
   user: null,
   token: null,
   login: (_token: string): void => {},
