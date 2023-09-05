@@ -3,28 +3,30 @@ import {
   DeleteCommandOutput,
   PutCommandOutput,
 } from "@aws-sdk/lib-dynamodb";
-import IUser from "../../shared/models/IUser";
+import { UserStatus, UserType } from "../../shared/schema/user.schema";
 import { DynamoService } from "../dynamodb.service";
+import { inject, injectable } from "tsyringe";
 
 interface DbModel {
   PK: string;
   SK: string;
-  status: "active" | "deactivated";
-  firstname?: string;
-  lastname?: string;
+  status: UserStatus;
+  firstname: string;
+  lastname: string;
   email: string;
-  dateCreated?: Date;
+  dateCreated?: number;
 }
 
 export const USER_PK = "USER";
-export class UserSchema {
-  constructor(private dynamo: DynamoService) {}
+@injectable()
+export class UserDynamoSchema {
+  constructor(@inject(DynamoService) private dynamo: DynamoService) {}
 
-  async put(item: IUser): Promise<PutCommandOutput> {
+  async put(item: UserType): Promise<PutCommandOutput> {
     return await this.dynamo.putItem(this.convertItemToDbModel(item));
   }
 
-  async putAll(items: IUser[]): Promise<BatchWriteCommandOutput> {
+  async putAll(items: UserType[]): Promise<BatchWriteCommandOutput> {
     return await this.dynamo.batchWrite(
       items.map((item) => this.convertItemToDbModel(item))
     );
@@ -40,11 +42,12 @@ export class UserSchema {
     return response;
   }
 
-  async get(username: string): Promise<IUser | null> {
+  async get(username: string): Promise<UserType | null> {
     const key = {
       PK: USER_PK,
       SK: username,
     };
+    console.log("Get By Key: ", { key });
     const response = await this.dynamo.getItem(key);
     if (!response.Item) {
       return null;
@@ -52,7 +55,7 @@ export class UserSchema {
     return this.convertDbModelToItem(response.Item as DbModel);
   }
 
-  convertItemToDbModel(item: IUser): DbModel {
+  convertItemToDbModel(item: UserType): DbModel {
     const model: DbModel = {
       PK: USER_PK,
       SK: item.username,
@@ -60,19 +63,20 @@ export class UserSchema {
       firstname: item.firstname,
       lastname: item.lastname,
       email: item.email,
-      dateCreated: item.dateCreated,
+      dateCreated: item.dateCreated?.getTime(), // to Epoch time
     };
     return model;
   }
 
-  convertDbModelToItem(data: DbModel): IUser {
-    const item: IUser = {
+  convertDbModelToItem(data: DbModel): UserType {
+    console.log("RETRIEVED", { data });
+    const item: UserType = {
       username: data.SK,
       status: data.status,
       firstname: data.firstname,
       lastname: data.lastname,
       email: data.email,
-      dateCreated: data.dateCreated,
+      dateCreated: data.dateCreated ? new Date(data.dateCreated) : new Date(),
     };
     return item;
   }

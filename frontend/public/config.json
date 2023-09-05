@@ -1,0 +1,13 @@
+{
+  "log_level": "DEBUG",
+  "api_url": "https://1ezfnho864.execute-api.us-east-1.amazonaws.com/serverless-tdb-app-dev/",
+  "cognito_config": {
+    "cognito_client_id": "4bs30hobrn4ibavor2hlnukkmm",
+    "cognito_domain": "serverless-tdb-app-dev",
+    "cognito_redirect_url": "http://localhost:4000/auth",
+    "region": "us-east-1",
+    "cognito_state": "Is the cognito set up",
+    "cognito_response_type": "token"
+  },
+  "environment": "dev"
+}

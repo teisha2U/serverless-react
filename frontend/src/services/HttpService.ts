@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { AxiosError } from 'axios';
-import { useContext } from 'react';
-import authContext from '../Auth/contexts/authContext';
-import IAuthToken from '../Auth/models/IAuthToken';
-import IUser from '../shared/models/IUser';
-import axiosInstance from '../utils/axiosInstance';
+import { AxiosError, AxiosInstance } from 'axios';
+import instantiateAxios from '../utils/axiosInstance';
 
 interface IGetParams {
   url: string;
@@ -12,6 +8,12 @@ interface IGetParams {
 }
 
 class HttpService {
+  private axiosInstance: AxiosInstance;
+
+  constructor(backendUrl: string) {
+    this.axiosInstance = instantiateAxios(backendUrl);
+  }
+
   private handleError(error: unknown) {
     const navigate = useNavigate();
     console.error(JSON.stringify(error));
@@ -34,7 +36,7 @@ class HttpService {
     const app_user = username ? username : 'anonymous';
     console.log('GET: ' + JSON.stringify(params));
     try {
-      const response = await axiosInstance.get(params.url, {
+      const response = await this.axiosInstance.get(params.url, {
         withCredentials: false,
         headers: { Authorization: 'Bearer ' + rawtoken },
       });
@@ -49,19 +51,13 @@ class HttpService {
     if (!rawtoken) {
       throw new Error('Cannot call backend API without security token');
     }
-    console.log(`${username}:: POST: ${url}`);
+    console.log(`${username}:: POST: ${url}`, { queryData });
+    console.log({ rawtoken });
     try {
-      const response = await axiosInstance.post(
-        url,
-        {
-          data: queryData,
-          responseType: JSON,
-          withCredentials: true,
-        },
-        {
-          headers: { Authorization: 'Bearer ' + rawtoken },
-        },
-      );
+      const response = await this.axiosInstance.post(url, queryData, {
+        withCredentials: false,
+        headers: { Authorization: 'Bearer ' + rawtoken, 'Content-Type': 'application/json' },
+      });
 
       return response.data;
     } catch (error) {

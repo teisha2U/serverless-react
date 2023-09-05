@@ -1,13 +1,13 @@
 {
     "log_level": "DEBUG",
-    "api_url": "https://[apiaddr].execute-api.us-east-1.amazonaws.com/dev/",
+    "api_url": "https://1ezfnho864.execute-api.us-east-1.amazonaws.com/serverless-tdb-app-dev/",
     "cognito_config": {
-      "cognito_client_id": "[deployed client id]",
-      "cognito_domain": "mailsorterdev",
-      "cognito_redirect_url": "https://[domain].cloudfront.net/auth",
-      "region": "us-east-1",
-      "cognito_state": "Passphrase to verify cognito",
-      "cognito_response_type": "token"
+        "cognito_client_id": "4bs30hobrn4ibavor2hlnukkmm",
+        "cognito_domain": "serverless-tdb-app-dev",
+        "cognito_redirect_url": "https://d3qltyqjywyc9d.cloudfront.net/auth",
+        "region": "us-east-1",
+        "cognito_state": "Is the cognito set up",
+        "cognito_response_type": "token"
     },
     "environment":"dev"
 }

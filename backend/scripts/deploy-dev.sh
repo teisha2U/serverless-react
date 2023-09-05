@@ -4,29 +4,26 @@ PROFILE=eds-sandbox  # profile for sandbox instance
 REGION=us-east-1
 
 # Must be created manually
-BUCKET="2u-ansible-deployments-325951203254"
+BUCKET="sam-deploy-useast1"
 
 # General parameters
 APPLICATION="serverless"
-PROJECT="react"
+PROJECT="tdb-app"
 ENVIRONMENT="dev"
 STACK_NAME="$APPLICATION-$PROJECT-$ENVIRONMENT"
 TEMPLATE="template.yaml"
 DEPLOY_CUSTOM_HANDLER="false"
-
 # Build 
 echo "Building Serverless React Demo project with SAM"
 
 # # Build lambdas
-# echo "Building Serverless React Lambdas"
+# echo "Building Sam Discovery Lambdas"
 # cd src
 npm install 
 npm run build
 # cd ..
 
 pwd
-
-
 
 sam build --template $TEMPLATE \
 && sam deploy \
@@ -40,19 +37,11 @@ sam build --template $TEMPLATE \
     "Environment"=$ENVIRONMENT \
   --parameter-overrides \
     ParameterKey=Application,ParameterValue=$APPLICATION \
-    ParameterKey=ProjectName,ParameterValue=$PROJECT \
+    ParameterKey=ProjectName,ParameterValue=$STACK_NAME \
     ParameterKey=Environment,ParameterValue=$ENVIRONMENT \
   --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --region $REGION \
   --profile $PROFILE
-
-
-# Error message
-# aws sns publish --topic-arn arn:aws:sns:us-east-1:001668627821:sam-disco-infra-experiment-dev --message "Hello World"
-# aws sns publish --topic-arn arn:aws:sns:us-east-1:001668627821:sam-disco-infra-experiment-dev --message "I DEMAND TO SEE THE DEAD LETTER QUEUE"
-# Success message
-# aws sns publish --topic-arn arn:aws:sns:us-east-1:001668627821:sam-disco-infra-experiment-dev --message "{\"id\":\"id-1\",\"name\":\"Hello World\", \"description\": \"Adopt easilt the best practices in your apps\"}"
-
 
 # cd src && \
 # sam build && \
@@ -61,4 +50,7 @@ sam build --template $TEMPLATE \
 #   --parameter-overrides ProjectName=${STACK_NAME} Environment=${ENVIRONMENT} \
 #   FrontEndUrl=${APP_URL} --profile ${PROFILE}
 
+echo "./scripts/deploy-react.sh $PROFILE $REGION $STACK_NAME"
+./scripts/deploy-react.sh $PROFILE $REGION $STACK_NAME
 
+echo "completed"
