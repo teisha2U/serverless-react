@@ -21,9 +21,12 @@ Globals:
     CodeUri: .
     Environment:
       Variables:
+        STAGE: !Ref Environment
         LOGGING_LEVEL: "INFO"
         DYNAMO_TABLE:
           Ref: DataTable
+        CORS_ORIGIN:
+          !Sub "${ClientCloudFrontDistro.DomainName}"
 Resources:
   DataTable:
     Type: "AWS::DynamoDB::Table"
@@ -235,6 +238,7 @@ Resources:
           ForwardedValues:
             QueryString: "true"
           TargetOriginId: !Sub ${ProjectName}-origin-dist
+          #Managed Origin Request Policies
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # CachingOptimized
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf # CORS-S3Origin
           ResponseHeadersPolicyId: 67f7725c-6f97-4210-82d7-5512b31e9d03 # SecurityHeadersPolicy
