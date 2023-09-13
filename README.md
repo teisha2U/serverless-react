@@ -169,4 +169,4 @@ Lambdas are associated with the API Gateway through Api Events added to the lamb
 
 ****
 
-AWS also has some great code examples available, including a React serverless demo app, so you can also look [here](https://github.com/aws-samples/react-cors-spa/tree/main) for another simplified implementation.  There are A LOT of different ways to put these together.
+AWS also has some great code examples available, including a React serverless demo app, so you can also look [here](https://github.com/aws-samples/react-cors-spa/tree/main) for another simplified implementation.  There are a lot of different ways to put these together, but you can also build a solid template and reuse it to create new applications.
