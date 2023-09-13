@@ -118,15 +118,17 @@ There are [instructions online from AWS](https://repost.aws/knowledge-center/cog
 
 Once the Identity Provider exists, it can be added to the Cognito User Pool as a SAML Identity Provider, which will hook the authentication from OneLogin into the Cognito client.  It will also create a tile on the users’ OneLogin page.
 
-![](https://lh6.googleusercontent.com/qnN0v4PFMBgeuJBJCvixUc1F5quotIQTh3Oq-T7Sk4B_bHoFcH7PGtnofVv3uA6n5ZgnlsatmmWFI5jor0V_4dnwuqXpvflCVIqxmwgx_uD6M4sFqPz3VZESWRV3kf1X2tKw7Ej7SABm_C3NG3p3lLg)   ![](https://lh4.googleusercontent.com/BuNdAm_BN4FXZNcn0wVaB3-sFuAXLb4JN6qoISMlRfyQ2jWFruUwzPJLlzICDIEZOvxr_j2sCoRCgWJIdXDbzKbmkclZfktFyeOyrES1eAnIPiWU3nBh9CWZLdBUjE7eVdA6Ztxmkbxd4D67vXzqjL4)
+|  UserPool - Add FederatedId |   Add SAML Identity Provider |
+|  -------------------- |  ------------------- |
+| ![userpool](./docs/images/AddFederatedIdP.png) | ![saml](./docs/images/AddSAMLToUserPool.png) |
 
 Unfortunately, this is not going to get the user to the application, so another OneLogin application tile is needed to point to the Index.html of the application.  It means that the users get two tiles on their OneLogin page, but only one of them is pointing to the actual application.
 
-You can see this is what was done to add our AWS Access through OneLogin.![](https://lh6.googleusercontent.com/HRA_gg2fja_s7otKu9gpOa_XWbeOiWNAVCw4GcekoBm1PgVQ70dkQ9wuKWpr9qFz_VYzyXyTgVOCbCPwFdQItsHXJU-KkT_ss_q_GppukFlfGvpuz2gcb0bocrieA_GQRSUtrsr0PY1J6_hsEbaQ-V8)
+You can see this is what was done to add our AWS Access through OneLogin.![](./docs/images/OneLoginAWSTiles.png)
 
 This is a really nice diagram of how OneLogin works with Cognito, other AWS services and Web Applications.  It was taken from an older [write-up of integrating Cognito and AWS](https://medium.com/@anjanava.biswas/aws-cognito-user-pool-federation-with-onelogin-idp-4b1962127b0b) that’s still relevant, but the screenshots of the Cognito console look different now.
 
-![](https://lh4.googleusercontent.com/HdbTCHG4eOYrq53fdNQc6gcd1zUDKPeA9gYLOr_WfG2m6fpezRlhqSyhtBP6X02xTRVvT42VunX3UjJhRoTFUKIDKt1Hf1fucsxXkYN8JU3redCZYfu4K1ChjOQetmauOE5vhyUFcbGb_UjP3E7VEPw)
+![](./docs/images/onelogin-to-cognito.webp)
 
 
 ##
@@ -135,7 +137,7 @@ This is a really nice diagram of how OneLogin works with Cognito, other AWS serv
 
 The backend piece of the serverless React app is built on Lambdas called through the API Gateway.
 
-![](https://lh5.googleusercontent.com/exXl2px3_UVOOrsZSQItbrM0N7Bz-a0pMNj43auWBlxv4_PC6BYzl6F-z-jAbLDQVW4tBWmCt5jZWpmneCnIEKBiCBq-6j6rocPQBe-iHXbhRZVcSsg89cVGKJazefphUhIDtJiowpyUxxgcnJXtVQ0)
+![](./docs/images/Lucid-BackEnd.png)
 
 
 #### Api Gateway
@@ -154,7 +156,11 @@ Authorizers can also be lambdas that validate parts of the request with custom l
 
 Lambdas are associated with the API Gateway through Api Events added to the lambda resource. The events define the HTTP method and the path that will be created in the API Gateway.
 
-![](https://lh6.googleusercontent.com/RFUOaNHTHS7hnPCNAcgsfpX9if2xTJNkF3MDgflOpwWmFAChzaQYIt5louk_8VZlHl_peM0JROaF01ukkTSaE_wY2rVoYJZ_1NpCTYrb30otZwFNyi7NjEx9RiJ3b_wOrea4-7on4aAcgAT8iySjH6E)
+****
 
-![](https://lh5.googleusercontent.com/p4HU89YETzdj9MROT9tSGEB2fYTWCdHPtok6g68AizBfXQiF6EDjNmACEy4m6AqyM0ORJefPkQEjOXaxlwaDiL7m41V3NTH9l3Q79htQj0uUC9CKNvK4d6a2lFH4U1dwyzQjyxi6B3nmTqeaYPhKiq8)
+| Add API Gateway | Add Lambda Routes to Gateway |
+| --------------  |  ----------- |
+| ![apigateway](./docs/images/ApiGateway.png) | ![userhandler](./docs/images/UserApiHandler.png)
+
+
 
