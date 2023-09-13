@@ -39,7 +39,7 @@ To see steps involved in the deploys, you just need to look at the npm commands 
 
 ## Front End
 
-![](https://lh3.googleusercontent.com/jwWWuKEY0RMzrnzkh_rTZL-3TZrGbCo_D_-FLsod4G-Vngg1w7xUiY-IxyTvv1Kxu44HKEY2mQEeiMXXigz6Wia3qbh5t4CBwv2VLBfWIOFGxjQjluOdAamycSaDLwLGTzorIDpduZ4JpVauW2jFYVE)
+![](./docs/images/Lucid-FrontEnd.png)
 
 
 #### Create an S3 Bucket to hold the website.  
