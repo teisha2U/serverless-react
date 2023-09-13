@@ -12,6 +12,13 @@ LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/e
 
 The application is a plain React app created by installing the libraries manually and adding Typescript.  This is the messiest part of the demo, because the content isn’t intended to be anything _juicy_ and I just pulled pieces from some experimental apps that I have.  
 
+<u>**Libraries**</u>:
+React 18 with Typescript
+Material UI
+Axios for http calls
+Zod for shared data structures between backend and frontend
+
+
 The Auth module is separate from the rest of the application. It contains an Auth context to hold the auth state, including the token, loggedIn status, and the username.  There is also an Auth guard to wrap around pages to enforce a logged in status.  And it includes the pages that are used in the redirects for login and logout.
 
 There is also an Application context that holds the config values and an alert that’ll pop up at the main page layout level.
@@ -44,7 +51,7 @@ But there are limitations on what S3 can do, for instance - you can’t use HTTP
 
 #### Creating a CloudFront distribution
 
-The CloudFront distribution will create a domain and associate it with an origin - which, in this case, is an [S3 bucket](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html).  The distribution lets your web application take advantage of CloudFront edge locations and caching.
+The CloudFront distribution will create a domain and associate it with an origin - which, in this case, is an [S3 bucket](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html).  The distribution lets your web application take advantage of CloudFront [edge locations and caching](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#RequestBehaviorS3Origin).
 
 For the React website, the distribution is configured to point to the index.html file forcing all errors and page requests to be handled by the SPA. Since there’s no server, it does mean that React’s Server Side Rendering isn’t going to work, but in some cases, Edge Lambdas can be used to get that functionality.
 
@@ -52,7 +59,6 @@ Because the connection between the bucket and the distribution happens over the 
 
 ![](https://lh5.googleusercontent.com/BB9X9OtKfLWzMMhshpI6fcHe68NTR90CITKWMbbmAvAd5lRmbBomCSlTPn60iejNdZSVUU9-GIHDwTEsrajrRVkph2qwUF96_DYWMQbEcV-qECR_btiannwz2dWzpbO7teZKrVRTYIbcmPufA9zm91Q)&#x20;
 
-<https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#RequestBehaviorS3Origin>
 
 CloudFront managed Origin request policies
 
@@ -163,7 +169,7 @@ The other resource needed is an Authorizer, which will tell the API Gateway how 
 
 Authorizers can also be lambdas that validate parts of the request with custom logic.
 
-Lambdas
+#### Lambdas
 
 Lambdas are associated with the API Gateway through Api Events added to the lambda resource. The events define the HTTP method and the path that will be created in the API Gateway.
 
