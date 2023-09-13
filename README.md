@@ -83,28 +83,33 @@ As an alternative to using redirects, AWS offers some javascript packages throug
 
 <small>https\://serverless-tdb-app-dev.auth.us-east-1.amazoncognito.com/login?response\_type=token\&client\_id=4bs30hobrn4ibavor2hlnukkmm\&redirect\_uri=https\://d3qltyqjywyc9d.cloudfront.net/auth\&state=Is%20the%20cognito%20set%20up</small>
 
+|  React App Login Page |   Cognito Login Page |
+|  -------------------- |  ------------------- |
+| ![react](./docs/images/AppLoginPage.png) | ![cognito](./docs/images/CognitoLoginPage.png) |
+
+
 ![](https://lh6.googleusercontent.com/Zab7GwdgfXS5vyqP-T6YGiW5aAdkcr9pXiWuvKZjwcJID_gLVkSjAegy-azKL1WQFZIb49r0Ji7HEL3Mzt3ZsWVbHkAcga_d9MesE3jxLzFW7moYqNv-c2bYN85lq-fMziPCfbXvduxTR9QRLE0LQYs)[![](https://lh5.googleusercontent.com/y6h4BKxKS_pRuQSPIM3v5s_grnyJuJO4jfWMpTbXfc9NsEN5zDWZzL4TGg2tqr0APLn14pCJY6Vqh6bL_G8V9QQZ9fbILymRPcahJKimPk1rTfEDdFNjdmBqIAkKXh_MREtzlet8BHAKXAViwx_yDD4)\
 ](https://d3qltyqjywyc9d.cloudfront.net/auth&)
 
 This is the URL in the example above:
 
-https\://serverless-tdb-app-dev.auth.us-east-1.amazoncognito.com/login?
+https\://serverless-tdb-app-dev.auth.us-east-1.amazoncognito.com/login?  
 
-response\_type=token&
+response\_type=token&  
 
-client\_id=4bs30hobrn4ibavor2hlnukkmm&
+client\_id=4bs30hobrn4ibavor2hlnukkmm&  
 
-redirect\_uri=<https://d3qltyqjywyc9d.cloudfront.net/auth&>
+redirect\_uri=<https://d3qltyqjywyc9d.cloudfront.net/auth&>  
 
-state=Is%20the%20cognito%20set%20up
+state=Is%20the%20cognito%20set%20up  
 
 These values are taken from the output of the CloudFormation stack when the template is run
 
-\--------------------------------------------------------------------------------------------------------------------------
+\-----------------------------------------------------------------
 
 Outputs                                                                                                                  
 
-\--------------------------------------------------------------------------------------------------------------------------
+\----------------------------------------------------------------- 
 
 Key                 CogntioRedirectUri                                                                                   
 
