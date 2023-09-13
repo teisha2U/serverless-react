@@ -7,6 +7,7 @@ An overview of the Demo React Serverless Application here: 
 
 LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/edit?invitationId=inv_50be9c54-dfd2-4362-b8e4-7e6fa6c94a7c&page=0_0#>
 
+****
 
 # Application
 
@@ -25,6 +26,7 @@ There is also an Application context that holds the config values and an alert t
 
 The demo app includes just one form that reads and writes data to DynamoDb.  
 
+****
 
 # Deploy
 
@@ -34,6 +36,7 @@ In order to deploy the application, the backend is deployed first, which contain
 
 To see steps involved in the deploys, you just need to look at the npm commands in the package.json on the root of the project, and follow them back to the backend and frontend npm commands.  
 
+****
 
 # AWS Objects
 
@@ -65,7 +68,7 @@ CloudFront managed Origin request policies
 https\://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html
 
 
-##
+****
 
 ## Authentication
 
@@ -131,7 +134,7 @@ This is a really nice diagram of how OneLogin works with Cognito, other AWS serv
 ![](./docs/images/onelogin-to-cognito.webp)
 
 
-##
+****
 
 ## Back End
 
