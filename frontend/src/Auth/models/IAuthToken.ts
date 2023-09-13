@@ -30,25 +30,3 @@ export interface ICognitoToken {
   email: string;
 }
 
-// export type DecodedToken = {
-//   readonly email: string;
-//   readonly exp: number;
-// }
-
-//   get authorizationString() {
-//       return `Bearer ${this.token}`;
-//   }
-
-//   get expiresAt(): Date {
-//       return new Date(this.decodedToken.exp * 1000);
-//   }
-
-//   get isExpired(): boolean {
-//       return new Date() > this.expiresAt;
-//   }
-
-//   get isValid(): boolean {
-//       return !this.isExpired;
-//   }
-
-// }

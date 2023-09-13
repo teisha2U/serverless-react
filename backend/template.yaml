@@ -58,6 +58,9 @@ Resources:
           Projection:
             ProjectionType: ALL
 
+  ###
+  ### Backend Lambdas
+  ###
   Api:
     Type: AWS::Serverless::Api
     Properties:
@@ -93,12 +96,11 @@ Resources:
           ResponseParameters:
             Headers:
               Access-Control-Allow-Origin: "'*'"
-
       Auth:
         DefaultAuthorizer: CognitoAuth
         Authorizers:
           CognitoAuth:
-            UserPoolArn: !GetAtt CognitoUserPool.Arn
+            UserPoolArn: !GetAtt CognitoUserPool.Arn  
         AddDefaultAuthorizerToCorsPreflight: False
 
   UserApiHandler:
@@ -144,7 +146,6 @@ Resources:
   ###
   ###  Security
   ###
-
   CognitoUserPool:
     Type: "AWS::Cognito::UserPool"
     Properties:
@@ -179,6 +180,10 @@ Resources:
     Properties:
       Domain: !Sub ${ProjectName}
       UserPoolId: !Ref CognitoUserPool
+
+  ###
+  ###  Application Hosting    
+  ### 
   ClientHostBucket:
     Type: "AWS::S3::Bucket"
     Properties:
@@ -268,6 +273,9 @@ Resources:
         SigningBehavior: always
         SigningProtocol: sigv4
 
+###
+### Output config values needed
+###
 Outputs:
   CogntioRedirectUri:
     Description: Redirect URI to front end from Cognito User Pool
