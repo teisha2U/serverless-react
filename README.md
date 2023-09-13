@@ -78,7 +78,7 @@ The Cognito resource has three pieces that need to be created: the UserPool, Use
 
 ![](./docs/images/CognitoUserPool.png)
 
-The Login page sends the user to authenticate through the Cognito User Pool through a redirect to the Cognito UserPoolDomain created in the template.  When the user is authenticated, they are redirected back to the application with a URL that contains the auth token that’ll be needed to make backend requests. 
+The Login page sends the user to authenticate through the Cognito User Pool through a [redirect to the Cognito UserPoolDomain](https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html) created in the template.  When the user is authenticated, they are redirected back to the application with a URL that contains the auth token that’ll be needed to make backend requests. 
 
 The CallbackURL in the CognitoUserClient enforces CORS between the application hosted on Cloudfront and the CognitoUserDomain.  You’ll get CORS errors if the location you’re redirecting back to in your application does not match the CallbackURLs Parameter supplied when the UserPoolClient was created.  Make sure that localhost isn’t in the list when the application is deployed to a production environment.
 

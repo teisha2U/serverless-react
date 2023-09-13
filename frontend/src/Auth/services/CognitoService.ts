@@ -3,6 +3,7 @@ import ICognitoConfig from '../../models/ICognitoConfig';
 import jwtDecode from 'jwt-decode';
 import IAuthToken, { ICognitoToken } from '../models/IAuthToken';
 import { getLogger } from '../../services/loggingService';
+import { base64Encode } from '../../utils/encode';
 
 export class CognitoService {
   private logger;
@@ -25,9 +26,9 @@ export class CognitoService {
     localStorage.setItem('cognito_token', token);
   }
 
-  validateToken(token: string): boolean {
+  validateToken(token: string, tokenState: string, configState: string): boolean {
     const data = jwtDecode(token) as ICognitoToken;
-    return data['aud'] === this.cognitoClientId;
+    return data['aud'] === this.cognitoClientId && tokenState === base64Encode(configState);
   }
 
   // ID_TOKEN:
@@ -91,7 +92,7 @@ export class CognitoService {
   // }
 
   getRedirectToSignInUrl(config: ICognitoConfig): string {
-    const url = `https://${config.cognito_domain}.auth.${config.region}.amazoncognito.com/login?response_type=${config.cognito_response_type}&client_id=${config.cognito_client_id}&redirect_uri=${config.cognito_redirect_url}&state=${config.cognito_state}`;
+    const url = `https://${config.cognito_domain}.auth.${config.region}.amazoncognito.com/login?response_type=${config.cognito_response_type}&client_id=${config.cognito_client_id}&redirect_uri=${config.cognito_redirect_url}&state=${base64Encode(config.cognito_state)}`;
     this.logger.debug('COGNITO LOGIN URL:: ' + url);
     if (!config.region) {
       return '/';
