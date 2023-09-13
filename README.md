@@ -99,21 +99,20 @@ state=Is%20the%20cognito%20set%20up
 These values are taken from the output of the CloudFormation stack when the template is run
 
 
-| \----------------------------------------------------------------- |
+
 |  Outputs  |
-| \----------------------------------------------------------------- |
 | --------------------------------------------------|
-| | Key |  CognitoRedirectUri |   |
-| | Description | Redirect URI to front end from Cognito User Pool |  |
-| | Value | https\://d3qltyqjywyc9d.cloudfront.net/auth |  | 
+| **Key**  CognitoRedirectUri    |
+| **Description** Redirect URI to front end from Cognito User Pool |  
+| **Value**  https\://d3qltyqjywyc9d.cloudfront.net/auth |  
 |       |
-| | Key |  CognitoClientId |   |
-| | Description | Cognito client ID |  |
-| | Value | 4bs30hobrn4ibavor2hlnukkmm |  | 
+|  **Key**   CognitoClientId |  
+|  **Description**  Cognito client ID |  
+|  **Value**  4bs30hobrn4ibavor2hlnukkmm |  
 |       |
-| | Key |  CognitoDomain |   |
-| | Description | Cogntio Domain |  |
-| | Value | serverless-tdb-app-dev |  | 
+|  **Key**   CognitoDomain |  
+|  **Description**  Cogntio Domain |  
+|  **Value**  serverless-tdb-app-dev |  
 
 Key                 CogntioRedirectUri                                                                                   
 
