@@ -57,7 +57,7 @@ For the React website, the distribution is configured to point to the index.html
 
 Because the connection between the bucket and the distribution happens over the internet, the authenticated requests are handled through an Origin Access Control [restricting access between the S3 Bucket and CloudFront Origin](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html).
 
-![](https://lh5.googleusercontent.com/BB9X9OtKfLWzMMhshpI6fcHe68NTR90CITKWMbbmAvAd5lRmbBomCSlTPn60iejNdZSVUU9-GIHDwTEsrajrRVkph2qwUF96_DYWMQbEcV-qECR_btiannwz2dWzpbO7teZKrVRTYIbcmPufA9zm91Q)&#x20;
+![](./docs/images/ClientCloudFrontDistro.png)&#x20;
 
 
 CloudFront managed Origin request policies
@@ -73,7 +73,7 @@ https\://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-manage
 
 The Cognito resource has three pieces that need to be created: the UserPool, UserPoolClient, and UserPoolDomain. The [UserPool is the container](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html) that will house the objects that drive the authentication and authorization for an application.  The [UserPoolClient](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html) specifies some of the OAuth configuration between Cognito and the client application. The [UserPoolDomain](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooldomain.html) creates the hosts that the application will use to log in and log out.
 
-![](https://lh6.googleusercontent.com/UWefOG585qKOXT-UfDBQs137uFaAdmegnOD7fCy0DAdP5ro_NeGNnNa_8JS5dlsJJWMb5yi08PNJW9AYIBjouu6JwLRpbPd1SWohhesZzyCUv3e4_7YJu_gHc8oms2yTTIXeWtuxwhsj4UrKO2D-tQI)
+![](./docs/images/CognitoUserPool.png)
 
 The Login page sends the user to authenticate through the Cognito User Pool through a redirect to the Cognito UserPoolDomain created in the template.  When the user is authenticated, they are redirected back to the application with a URL that contains the auth token that’ll be needed to make backend requests. 
 
@@ -81,7 +81,7 @@ The CallbackURL in the CognitoUserClient enforces CORS between the application h
 
 As an alternative to using redirects, AWS offers some javascript packages through its AWS Amplify libraries that can be added to the React application to authenticate with Cognito.
 
-https\://serverless-tdb-app-dev.auth.us-east-1.amazoncognito.com/login?response\_type=token\&client\_id=4bs30hobrn4ibavor2hlnukkmm\&redirect\_uri=https\://d3qltyqjywyc9d.cloudfront.net/auth\&state=Is%20the%20cognito%20set%20up
+<small>https\://serverless-tdb-app-dev.auth.us-east-1.amazoncognito.com/login?response\_type=token\&client\_id=4bs30hobrn4ibavor2hlnukkmm\&redirect\_uri=https\://d3qltyqjywyc9d.cloudfront.net/auth\&state=Is%20the%20cognito%20set%20up</small>
 
 ![](https://lh6.googleusercontent.com/Zab7GwdgfXS5vyqP-T6YGiW5aAdkcr9pXiWuvKZjwcJID_gLVkSjAegy-azKL1WQFZIb49r0Ji7HEL3Mzt3ZsWVbHkAcga_d9MesE3jxLzFW7moYqNv-c2bYN85lq-fMziPCfbXvduxTR9QRLE0LQYs)[![](https://lh5.googleusercontent.com/y6h4BKxKS_pRuQSPIM3v5s_grnyJuJO4jfWMpTbXfc9NsEN5zDWZzL4TGg2tqr0APLn14pCJY6Vqh6bL_G8V9QQZ9fbILymRPcahJKimPk1rTfEDdFNjdmBqIAkKXh_MREtzlet8BHAKXAViwx_yDD4)\
 ](https://d3qltyqjywyc9d.cloudfront.net/auth&)
