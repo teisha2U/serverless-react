@@ -102,13 +102,9 @@ These values are taken from the output of the CloudFormation stack when the temp
 
 |  Outputs  |
 | --------------------------------------------------|
-| **Key**  CognitoRedirectUri    |
-| **Description** Redirect URI to front end from Cognito User Pool |  
-| **Value**  https\://d3qltyqjywyc9d.cloudfront.net/auth |  
+| **Key**  CognitoRedirectUri   <br>  **Description** Redirect URI to front end from Cognito User Pool  <br>  **Value**  https\://d3qltyqjywyc9d.cloudfront.net/auth |
 |       |
-|  **Key**   CognitoClientId |  
-|  **Description**  Cognito client ID |  
-|  **Value**  4bs30hobrn4ibavor2hlnukkmm |  
+|  **Key**   CognitoClientId <br>  **Description**  Cognito client ID <br>  **Value**  4bs30hobrn4ibavor2hlnukkmm |  
 |       |
 |  **Key**   CognitoDomain |  
 |  **Description**  Cogntio Domain |  
