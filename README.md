@@ -10,20 +10,20 @@ LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/e
 
 # Application
 
-The application is a plain React app created by installing the libraries manually and adding Typescript.  This is the messiest part of the demo, because the content isn’t intended to be anything _juicy_ and I just pulled pieces from some experimental apps that I have.  
+The application is a plain React app created by installing the libraries manually and adding Typescript.  This is the messiest part of the demo, because the content isn’t intended to be anything _juicy_ and I just pulled pieces from some experimental apps that I have.    
 
 <u>**Libraries**</u>:
-React 18 with Typescript
-Material UI
-Axios for http calls
-Zod for shared data structures between backend and frontend
+React 18 with Typescript  
+Material UI  
+Axios for http calls  
+Zod for shared data structures between backend and frontend  
 
 
-The Auth module is separate from the rest of the application. It contains an Auth context to hold the auth state, including the token, loggedIn status, and the username.  There is also an Auth guard to wrap around pages to enforce a logged in status.  And it includes the pages that are used in the redirects for login and logout.
+The Auth module is separate from the rest of the application. It contains an Auth context to hold the auth state, including the token, loggedIn status, and the username.  There is also an Auth guard to wrap around pages to enforce a logged in status.  And it includes the pages that are used in the redirects for login and logout.  
 
-There is also an Application context that holds the config values and an alert that’ll pop up at the main page layout level.
+There is also an Application context that holds the config values and an alert that’ll pop up at the main page layout level.  
 
-The demo app includes just one form that reads and writes data to DynamoDb.
+The demo app includes just one form that reads and writes data to DynamoDb.  
 
 
 # Deploy
