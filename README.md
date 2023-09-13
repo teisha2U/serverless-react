@@ -12,7 +12,7 @@ LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/e
 
 The application is a plain React app created by installing the libraries manually and adding Typescript.  This is the messiest part of the demo, because the content isn’t intended to be anything _juicy_ and I just pulled pieces from some experimental apps that I have.    
 
-<u>**Libraries**</u>:
+<ins>**Libraries**</ins>:  
 React 18 with Typescript  
 Material UI  
 Axios for http calls  
