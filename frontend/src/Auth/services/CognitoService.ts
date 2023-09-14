@@ -3,7 +3,7 @@ import ICognitoConfig from '../../models/ICognitoConfig';
 import jwtDecode from 'jwt-decode';
 import IAuthToken, { ICognitoToken } from '../models/IAuthToken';
 import { getLogger } from '../../services/loggingService';
-import { base64Encode } from '../../utils/encode';
+import { base64Encode } from '../../utils/stringUtils';
 
 export class CognitoService {
   private logger;
@@ -92,6 +92,7 @@ export class CognitoService {
   // }
 
   getRedirectToSignInUrl(config: ICognitoConfig): string {
+    console.log(`Redirect to ${config.cognito_domain}`)
     const url = `https://${config.cognito_domain}.auth.${config.region}.amazoncognito.com/login?response_type=${config.cognito_response_type}&client_id=${config.cognito_client_id}&redirect_uri=${config.cognito_redirect_url}&state=${base64Encode(config.cognito_state)}`;
     this.logger.debug('COGNITO LOGIN URL:: ' + url);
     if (!config.region) {

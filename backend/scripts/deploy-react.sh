@@ -15,4 +15,4 @@ echo "DistributionID - ${distributionid}"
 echo "Host Bucket - ${hostBucket}"
 
 aws s3 sync ../frontend/dist s3://${hostBucket} --delete --profile $PROFILE --region $REGION
-aws cloudfront create-invalidation --distribution-id ${distributionid} --paths / --profile $PROFILE --region $REGION
+aws cloudfront create-invalidation --distribution-id ${distributionid} --paths /* --profile $PROFILE --region $REGION

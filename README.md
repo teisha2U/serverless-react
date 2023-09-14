@@ -5,7 +5,7 @@ An overview of the Demo React Serverless Application here: 
 
 <https://github.com/teisha2U/serverless-react>
 
-LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/edit?invitationId=inv_50be9c54-dfd2-4362-b8e4-7e6fa6c94a7c&page=0_0#>
+LucidChart: <https://lucid.app/lucidchart/5d46efd7-3464-4e98-a93f-aff6ce9fc02c/edit?viewport_loc=-230%2C-114%2C1910%2C1008%2C0_0&invitationId=inv_50be9c54-dfd2-4362-b8e4-7e6fa6c94a7c>
 
 ****
 
