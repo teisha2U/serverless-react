@@ -37,6 +37,7 @@ The application is deployed using NPM workspaces - the only npm commands that ar
 In order to deploy the application, the backend is deployed first, which contains the infrastructure template and lambda code.  Then the React application is built and copied into the Host Bucket created by the backend.
 
 To see steps involved in the deploys, you just need to look at the npm commands in the package.json on the root of the project, and follow them back to the backend and frontend npm commands.  
+For the sam cli commands, you'll need to have sam cli installed locally, and r[efer to this page](https://confluence.2u.com/display/CTDEVOPS/AWS+SSO+FAQs) to see options for creating AWS cli profiles that'll assume the role for the sandbox.
 
 ****
 
